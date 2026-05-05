@@ -1,7 +1,6 @@
 # Be More Agent 🤖
 **A Customizable, Offline-First AI Agent for Jetson Orin Nano**
 
-[![Watch the Demo](https://img.youtube.com/vi/l5ggH-YhuAw/maxresdefault.jpg)](https://youtu.be/l5ggH-YhuAw)
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![Platform](https://img.shields.io/badge/Platform-Jetson%20Orin%20Nano-red) ![License](https://img.shields.io/badge/License-MIT-green)
 
