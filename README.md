@@ -1,11 +1,11 @@
 # Be More Agent 🤖
-**A Customizable, Offline-First AI Agent for Raspberry Pi**
+**A Customizable, Offline-First AI Agent for Jetson Orin Nano**
 
 [![Watch the Demo](https://img.youtube.com/vi/l5ggH-YhuAw/maxresdefault.jpg)](https://youtu.be/l5ggH-YhuAw)
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi-red) ![License](https://img.shields.io/badge/License-MIT-green)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![Platform](https://img.shields.io/badge/Platform-Jetson%20Orin%20Nano-red) ![License](https://img.shields.io/badge/License-MIT-green)
 
-This project turns a Raspberry Pi into a fully functional, conversational AI agent. Unlike cloud-based assistants, this agent runs **100% locally** on your device. It listens for a wake word, processes speech, "thinks" using a local Large Language Model (LLM), and speaks back with a low-latency neural voice—all while displaying reactive face animations.
+This project turns a Jetson Orin Nano into a fully functional, conversational AI agent. Unlike cloud-based assistants, this agent runs **100% locally** on your device. It listens for a wake word, processes speech, "thinks" using a local Large Language Model (LLM), and speaks back with a low-latency neural voice—all while displaying reactive face animations.
 
 **It is designed as a blank canvas:** You can easily swap the face images and sound effects to create your own character!
 
@@ -21,10 +21,10 @@ This project turns a Raspberry Pi into a fully functional, conversational AI age
 
 ## 🛠️ Hardware Requirements
 
-* **Raspberry Pi 5** (Recommended) or Pi 4 (4GB RAM minimum)
+* **Jetson Orin Nano 8GB** (Recommended)
 * USB Microphone & Speaker
 * LCD Screen (DSI or HDMI)
-* Raspberry Pi Camera Module
+* Jetson-compatible camera module (optional)
 
 ---
 
@@ -59,7 +59,7 @@ be-more-agent/
 ## 🚀 Installation
 
 ### 1. Prerequisites
-Ensure your Raspberry Pi OS is up to date.
+Ensure your Jetson Linux environment is up to date.
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install git -y
