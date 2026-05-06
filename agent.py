@@ -72,6 +72,7 @@ DEFAULT_CONFIG = {
     "system_prompt_extras": "",
     "input_device": None,
     "input_sample_rate": None,
+    "stt_debug_display": True,
 }
 
 def load_config():
@@ -239,12 +240,20 @@ class BotGUI:
         self.oww_model = None
         if os.path.exists(WAKE_WORD_MODEL):
             try:
-                self.oww_model = Model(wakeword_model_paths=[WAKE_WORD_MODEL])
+                # Force ONNX backend because our wake-word model is an .onnx file.
+                self.oww_model = Model(
+                    wakeword_models=[WAKE_WORD_MODEL],
+                    inference_framework="onnx",
+                )
                 print("[INIT] Wake Word Loaded.", flush=True)
             except TypeError:
                 try:
-                    self.oww_model = Model(wakeword_models=[WAKE_WORD_MODEL])
-                    print("[INIT] Wake Word Loaded (New API).", flush=True)
+                    # Backward-compatible fallback for older openwakeword versions.
+                    self.oww_model = Model(
+                        wakeword_model_paths=[WAKE_WORD_MODEL],
+                        inference_framework="onnx",
+                    )
+                    print("[INIT] Wake Word Loaded (Legacy API).", flush=True)
                 except Exception as e:
                     print(f"[CRITICAL] Failed to load model: {e}")
             except Exception as e:
@@ -444,6 +453,9 @@ class BotGUI:
                     continue
 
                 user_text = self.transcribe_audio(audio_file)
+                if CURRENT_CONFIG.get("stt_debug_display", False):
+                    debug_text = user_text if user_text else "<empty>"
+                    self.append_to_text(f"[STT TEST] {debug_text}")
                 if not user_text:
                     self.set_state(BotStates.IDLE, "Transcription empty.")
                     continue
